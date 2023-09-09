@@ -1,0 +1,216 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Grievance Form</title>
+    <!-- Bootstrap CDN -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+    
+        body {
+            background-image: url('https://abraogroup.com/wp-content/uploads/2021/03/Poseidon_Shipping_03-scaled.jpg'); /* Sample image from Unsplash */
+            background-size: cover; /* Cover the viewport */
+            background-repeat: no-repeat; /* Do not repeat the image */
+            background-attachment: fixed; /* Fixed background image */
+            background-position: center center; /* Center the image */
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.8); /* White with 80% opacity */
+        }
+
+        .spinner-border {
+            width: 9rem;
+            height: 9rem;
+        }
+
+        .theme-color {
+            background-color: #6c2080;
+            color: white;
+        }
+
+        .btn-theme {
+            background-color: #fc3404;
+            color: white;
+        }
+
+        body {
+            font-family: Arial, sans-serif; /* Default font, you can change this */
+        }
+    
+        #responseBox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background-color: #f4f4f4; /* Background color of the box, change as needed */
+            color: #333; /* Font color, change as needed */
+            z-index: 1000;
+            display: none;
+            padding: 50px;
+            box-sizing: border-box;
+            font-size: 24px; /* Font size, adjust as needed */
+            overflow-y: auto;
+            border: 5px solid #333; /* Border color and size, adjust as needed */
+        }
+
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%); /* Center the box */
+        width: 80vw; /* 80% of the viewport width */
+        max-height: 80vh; /* 80% of the viewport height */
+        background-color: rgba(255, 255, 255, 0.9); /* Slightly transparent white */
+        color: #333; /* Font color */
+        z-index: 1000;
+        display: none;
+        padding: 50px;
+        box-sizing: border-box;
+        font-size: 24px;
+        overflow-y: auto;
+        border: 5px solid #6c2080; /* Theme color border */
+        border-radius: 15px; /* Rounded corners */
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Slight shadow for depth */
+    </style>
+    </style>
+</head>
+
+<body>
+
+    <div id="spinnerContainer" style=" text-align: center;">
+        <div id="spinner" class="spinner-border" style=" display:none; color: red;
+        margin-top: 200px;
+        position: absolute;
+        z-index: 500;">
+            <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-10 offset-md-1">
+                <div class="card theme-color">
+                    <div class="card-header">
+                        Employee Grievance Form
+                    </div>
+                    <div class="card-body">
+                       
+                            <div class="form-group">
+                                <label for="employeeID">Employee ID:</label>
+                                <input type="text" class="form-control" id="employeeID" placeholder="Enter Employee ID">
+                            </div>
+                            <div class="form-group">
+                                <label for="employeeName">Employee Name:</label>
+                                <input type="text" class="form-control" id="employeeName" placeholder="Enter Employee Name">
+                            </div>
+                            <div class="form-group">
+                                <label for="department">Department/Team:</label>
+                                <input type="text" class="form-control" id="department" placeholder="Enter Department/Team">
+                            </div>
+                            <div class="form-group">
+                                <label>Contact Information:</label>
+                                <input type="email" class="form-control mb-2" placeholder="Email">
+                                <input type="text" class="form-control" placeholder="Phone Number">
+                            </div>
+                            <div class="form-group">
+                                <label for="grievanceType">Grievance Type/Category:</label>
+                                <select class="form-control" id="grievanceType">
+                                    <option>Harassment</option>
+                                    <option>Work Conditions</option>
+                                    <option>Pay and Benefits</option>
+                                    <option>Discrimination</option>
+                                    <!-- Add other options as needed -->
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="incidentDate">Date of Incident:</label>
+                                <input type="date" class="form-control" id="incidentDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="incidentLocation">Location of Incident:</label>
+                                <input type="text" class="form-control" id="incidentLocation" placeholder="Enter Location">
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description:</label>
+                                <textarea class="form-control" id="description" rows="3"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Supporting Documentation:</label>
+                                <input type="file" class="form-control-file mb-2" id="attachments">
+                                <input type="text" class="form-control" placeholder="Links">
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="anonymousSubmission">
+                                <label class="form-check-label" for="anonymousSubmission">Anonymous Submission</label>
+                            </div>
+                            <div class="form-group">
+                                <label for="followUpMethod">Preferred Follow-up Method:</label>
+                                <select class="form-control" id="followUpMethod">
+                                    <option>Email</option>
+                                    <option>Phone</option>
+                                    <option>In-person meeting</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="additionalNotes">Additional Notes or Comments:</label>
+                                <textarea class="form-control" id="additionalNotes" rows="3"></textarea>
+                            </div>
+                            <div class="form-group form-check">
+                                <input type="checkbox" class="form-check-input" id="acknowledgmentCheckbox">
+                                <label class="form-check-label" for="acknowledgmentCheckbox">I acknowledge the information provided is accurate.</label>
+                            </div>
+                          
+                            </div>
+                            <button class="btn btn-theme" onclick="submitQuery()">Submit</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="responseBox">
+        <button id="closeButton" style="position: absolute; top: 10px; right: 10px;">Close</button>
+
+    </div>
+
+    <script>
+        document.getElementById('closeButton').addEventListener('click', function() {
+            document.getElementById('responseBox').style.display = 'none';
+        });
+        
+
+        function submitQuery() {
+            // Hide the main container
+            document.getElementById('spinner').style.display = 'inline-block';
+            document.querySelector('.container.mt-5').style.display = 'none';
+        
+            const description = document.getElementById('description').value;
+            console.log("description: " + description)
+            const query = "Question: " + description;
+        
+            $.ajax({
+                url: '/api/query',
+                method: 'POST',
+                contentType: 'application/json',  // Set the content type to JSON
+                data: JSON.stringify({ query: query }),  // Convert the data to a JSON string
+                success: function(data) {
+                    const responseBox = document.getElementById('responseBox');
+                    responseBox.innerHTML = data;  // Set the server's response as the content
+                    responseBox.style.display = 'block';  // Show the div
+                    document.getElementById('spinner').style.display = 'none';
+
+                }
+            });
+        }
+    </script>
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
